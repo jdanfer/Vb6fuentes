@@ -1,0 +1,15 @@
+Línea 910: la clase MSAdodcLib.Adodc del control data_clicnv no era una clase de control cargada.
+Línea 1011: la clase MSMask.MaskEdBox del control txt_vence no era una clase de control cargada.
+Línea 1069: la clase MSDBCtls.DBCombo del control cbotarj no era una clase de control cargada.
+Línea 1089: la clase MSMask.MaskEdBox del control txt_codemisor no era una clase de control cargada.
+Línea 1202: la clase MSDBCtls.DBCombo del control cbonomcob no era una clase de control cargada.
+Línea 1224: la clase MSMask.MaskEdBox del control txt_codcob no era una clase de control cargada.
+Línea 1257: la clase MSDBCtls.DBCombo del control cbonompro no era una clase de control cargada.
+Línea 1279: la clase MSMask.MaskEdBox del control txt_codpro no era una clase de control cargada.
+Línea 1312: la clase MSMask.MaskEdBox del control txt_fecbaj no era una clase de control cargada.
+Línea 1345: la clase MSMask.MaskEdBox del control txt_fecing no era una clase de control cargada.
+Línea 1818: la clase MSMask.MaskEdBox del control mfcarta no era una clase de control cargada.
+Línea 1981: la clase MSMask.MaskEdBox del control txt_nac no era una clase de control cargada.
+Línea 2013: la clase MSMask.MaskEdBox del control txt_codzon no era una clase de control cargada.
+Línea 2064: la clase MSDBCtls.DBCombo del control cbomutual no era una clase de control cargada.
+Línea 2122: la clase MSDBCtls.DBCombo del control cbolocalid no era una clase de control cargada.

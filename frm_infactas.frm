@@ -1,0 +1,502 @@
+VERSION 5.00
+Object = "{C932BA88-4374-101B-A56C-00AA003668DC}#1.1#0"; "MSMASK32.OCX"
+Object = "{00025600-0000-0000-C000-000000000046}#5.2#0"; "CRYSTL32.OCX"
+Begin VB.Form frm_infactas 
+   BackColor       =   &H00800000&
+   BorderStyle     =   1  'Fixed Single
+   Caption         =   "Informes de ACTAS"
+   ClientHeight    =   4755
+   ClientLeft      =   45
+   ClientTop       =   345
+   ClientWidth     =   6060
+   BeginProperty Font 
+      Name            =   "Verdana"
+      Size            =   12
+      Charset         =   0
+      Weight          =   700
+      Underline       =   0   'False
+      Italic          =   0   'False
+      Strikethrough   =   0   'False
+   EndProperty
+   Icon            =   "frm_infactas.frx":0000
+   LinkTopic       =   "Form1"
+   MaxButton       =   0   'False
+   MinButton       =   0   'False
+   ScaleHeight     =   4755
+   ScaleWidth      =   6060
+   StartUpPosition =   1  'CenterOwner
+   Begin VB.Data data_cargo 
+      Caption         =   "data_cargo"
+      Connect         =   "Access"
+      DatabaseName    =   ""
+      DefaultCursorType=   0  'DefaultCursor
+      DefaultType     =   2  'UseODBC
+      Exclusive       =   0   'False
+      Height          =   375
+      Left            =   360
+      Options         =   0
+      ReadOnly        =   0   'False
+      RecordsetType   =   1  'Dynaset
+      RecordSource    =   ""
+      Top             =   3600
+      Visible         =   0   'False
+      Width           =   2655
+   End
+   Begin VB.Data data_busca 
+      Caption         =   "data_busca"
+      Connect         =   "Access"
+      DatabaseName    =   ""
+      DefaultCursorType=   0  'DefaultCursor
+      DefaultType     =   2  'UseODBC
+      Exclusive       =   0   'False
+      Height          =   375
+      Left            =   3240
+      Options         =   0
+      ReadOnly        =   0   'False
+      RecordsetType   =   1  'Dynaset
+      RecordSource    =   ""
+      Top             =   3360
+      Visible         =   0   'False
+      Width           =   2535
+   End
+   Begin Crystal.CrystalReport cr1 
+      Left            =   5520
+      Top             =   2880
+      _ExtentX        =   741
+      _ExtentY        =   741
+      _Version        =   348160
+      DiscardSavedData=   -1  'True
+      WindowState     =   2
+      PrintFileLinesPerPage=   60
+   End
+   Begin VB.Data data_acc 
+      Caption         =   "data_acc"
+      Connect         =   "Access"
+      DatabaseName    =   ""
+      DefaultCursorType=   0  'DefaultCursor
+      DefaultType     =   2  'UseODBC
+      Exclusive       =   0   'False
+      Height          =   375
+      Left            =   120
+      Options         =   0
+      ReadOnly        =   0   'False
+      RecordsetType   =   1  'Dynaset
+      RecordSource    =   ""
+      Top             =   3120
+      Visible         =   0   'False
+      Width           =   3015
+   End
+   Begin VB.Data data_inf 
+      Caption         =   "data_inf"
+      Connect         =   "Access"
+      DatabaseName    =   ""
+      DefaultCursorType=   0  'DefaultCursor
+      DefaultType     =   2  'UseODBC
+      Exclusive       =   0   'False
+      Height          =   375
+      Left            =   -480
+      Options         =   0
+      ReadOnly        =   0   'False
+      RecordsetType   =   1  'Dynaset
+      RecordSource    =   ""
+      Top             =   3120
+      Visible         =   0   'False
+      Width           =   2775
+   End
+   Begin VB.CommandButton Command2 
+      Caption         =   "Salir"
+      Height          =   735
+      Left            =   3600
+      TabIndex        =   9
+      Top             =   3720
+      Width           =   2055
+   End
+   Begin VB.CommandButton Command1 
+      Caption         =   "Procesar..."
+      Height          =   735
+      Left            =   360
+      TabIndex        =   8
+      Top             =   3720
+      Width           =   2055
+   End
+   Begin VB.Frame Frame1 
+      BackColor       =   &H00FFFF80&
+      Caption         =   "Datos de informe"
+      Height          =   3015
+      Left            =   120
+      TabIndex        =   0
+      Top             =   240
+      Width           =   5775
+      Begin VB.ComboBox Combo2 
+         BeginProperty Font 
+            Name            =   "Verdana"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   360
+         ItemData        =   "frm_infactas.frx":0442
+         Left            =   1800
+         List            =   "frm_infactas.frx":0444
+         Style           =   2  'Dropdown List
+         TabIndex        =   11
+         Top             =   1800
+         Visible         =   0   'False
+         Width           =   3375
+      End
+      Begin VB.OptionButton Option2 
+         BackColor       =   &H00FF8080&
+         Caption         =   "Resumen"
+         Height          =   270
+         Left            =   2880
+         TabIndex        =   7
+         Top             =   2400
+         Width           =   2295
+      End
+      Begin VB.OptionButton Option1 
+         BackColor       =   &H00FF8080&
+         Caption         =   "Detalle"
+         Height          =   270
+         Left            =   120
+         TabIndex        =   6
+         Top             =   2400
+         Value           =   -1  'True
+         Width           =   2295
+      End
+      Begin VB.ComboBox Combo1 
+         Height          =   390
+         ItemData        =   "frm_infactas.frx":0446
+         Left            =   1800
+         List            =   "frm_infactas.frx":0453
+         Style           =   2  'Dropdown List
+         TabIndex        =   5
+         Top             =   1200
+         Width           =   3375
+      End
+      Begin MSMask.MaskEdBox mh 
+         Height          =   375
+         Left            =   3600
+         TabIndex        =   3
+         Top             =   480
+         Width           =   1575
+         _ExtentX        =   2778
+         _ExtentY        =   661
+         _Version        =   393216
+         MaxLength       =   10
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   12
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Format          =   "dd/mm/yyyy"
+         Mask            =   "##/##/####"
+         PromptChar      =   "_"
+      End
+      Begin MSMask.MaskEdBox md 
+         Height          =   375
+         Left            =   1800
+         TabIndex        =   2
+         Top             =   480
+         Width           =   1575
+         _ExtentX        =   2778
+         _ExtentY        =   661
+         _Version        =   393216
+         MaxLength       =   10
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "Arial"
+            Size            =   12
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Format          =   "dd/mm/yyyy"
+         Mask            =   "##/##/####"
+         PromptChar      =   "_"
+      End
+      Begin VB.Label Label3 
+         BackColor       =   &H00C0C0C0&
+         Caption         =   "Usuario:"
+         Height          =   375
+         Left            =   120
+         TabIndex        =   10
+         Top             =   1800
+         Visible         =   0   'False
+         Width           =   1575
+      End
+      Begin VB.Label Label2 
+         BackColor       =   &H00C0C0C0&
+         Caption         =   "Informe:"
+         Height          =   375
+         Left            =   120
+         TabIndex        =   4
+         Top             =   1200
+         Width           =   1575
+      End
+      Begin VB.Label Label1 
+         BackColor       =   &H00C0C0C0&
+         Caption         =   "Fechas:"
+         Height          =   375
+         Left            =   120
+         TabIndex        =   1
+         Top             =   480
+         Width           =   1575
+      End
+   End
+End
+Attribute VB_Name = "frm_infactas"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Private Sub Check1_Click()
+If Check2.value = 1 Then
+   Check2.value = 0
+End If
+
+End Sub
+
+Private Sub Check2_Click()
+If Check1.value = 1 Then
+   Check1.value = 0
+End If
+
+End Sub
+
+
+
+Private Sub Command1_Click()
+Command1.Enabled = False
+Command2.Enabled = False
+Dim Xelu As String
+
+frm_infactas.MousePointer = 11
+data_busca.RecordSource = "Select * from infor_sol where cl_nomcobr =" & 4 & " and cl_val2 =" & 7 & " and estado =" & 99
+data_busca.Refresh
+data_acc.RecordSource = "Select * from infor_sol where cl_val2 =" & 7 & " and cl_nomcobr =" & 4
+data_acc.Refresh
+Xelu = ""
+
+If data_busca.Recordset.RecordCount > 0 Then
+   data_busca.Recordset.MoveFirst
+   Do While Not data_busca.Recordset.EOF
+      If IsNull(data_busca.Recordset("cl_val3")) = False Then
+         If data_busca.Recordset("cl_val3") = 1 Then
+'            data_acc.Recordset.FindFirst "estado =" & data_busca.Recordset("cl_nrovend")
+'            If Not data_acc.Recordset.NoMatch Then
+            data_acc.RecordSource = "Select * from infor_sol where cl_nomcobr =" & 4 & " and cl_val2 =" & 7 & " and estado =" & data_busca.Recordset("cl_nrovend")
+            data_acc.Refresh
+            If data_acc.Recordset.RecordCount > 0 Then
+               If data_acc.Recordset("cl_val3") = 1 Then
+               Else
+                  data_acc.Recordset.Edit
+                  data_acc.Recordset("cl_val3") = 1
+                  data_acc.Recordset.Update
+               End If
+            End If
+         End If
+      End If
+      
+      If IsNull(data_busca.Recordset("cl_nro_sup")) = False Then
+         If data_busca.Recordset("cl_nro_sup") >= 0 Then
+'            data_acc.Recordset.FindFirst "estado =" & data_busca.Recordset("cl_nrovend")
+'            If Not data_acc.Recordset.NoMatch Then
+            data_acc.RecordSource = "Select * from infor_sol where cl_nomcobr =" & 4 & " and cl_val2 =" & 7 & " and estado =" & data_busca.Recordset("cl_nrovend")
+            data_acc.Refresh
+            If data_acc.Recordset.RecordCount > 0 Then
+               If IsNull(data_acc.Recordset("cl_nro_sup")) = False Then
+                  If data_acc.Recordset("cl_nro_sup") = data_busca.Recordset("cl_nro_sup") Then
+                  Else
+                     data_acc.Recordset.Edit
+                     data_acc.Recordset("cl_nro_sup") = data_busca.Recordset("cl_nro_sup")
+                     data_acc.Recordset.Update
+                  End If
+               Else
+                  data_acc.Recordset.Edit
+                  data_acc.Recordset("cl_nro_sup") = data_busca.Recordset("cl_nro_sup")
+                  data_acc.Recordset.Update
+               End If
+            End If
+         End If
+      End If
+      data_busca.Recordset.MoveNext
+   Loop
+End If
+data_busca.RecordSource = "Select * from infor_sol where cl_val2 =" & 7 & " and cl_nomcobr =" & 4 & " and estado <>" & 97
+data_busca.Refresh
+
+If md.Text <> "__/__/____" Then
+   If mh.Text <> "__/__/____" Then
+      If data_inf.Recordset.RecordCount > 0 Then
+         data_inf.Recordset.MoveFirst
+         Do While Not data_inf.Recordset.EOF
+            data_inf.Recordset.Delete
+            data_inf.Recordset.MoveNext
+         Loop
+      End If
+      If Combo1.ListIndex = 0 Then
+         If Xelu = "" Then
+            data_acc.RecordSource = "Select * from infor_sol where cl_val2 =" & 7 & " and estado <>" & 97 & " and cl_fnac >=#" & Format(md.Text, "yyyy/mm/dd") & "# and cl_fnac <=#" & Format(mh.Text, "yyyy/mm/dd") & "# and cl_nomcobr =" & 4
+            data_acc.Refresh
+         Else
+            data_acc.RecordSource = "Select * from infor_sol where cl_val2 =" & 7 & " and estado <>" & 97 & " and cl_fnac >=#" & Format(md.Text, "yyyy/mm/dd") & "# and cl_fnac <=#" & Format(mh.Text, "yyyy/mm/dd") & "# and cl_nomcobr =" & 4 & " and cl_nom_sup ='" & Xelu & "'"
+            data_acc.Refresh
+         End If
+      Else
+         If Combo1.ListIndex = 1 Then
+            If Xelu = "" Then
+               data_acc.RecordSource = "Select * from infor_sol where cl_val2 =" & 7 & " and cl_fnac >=#" & Format(md.Text, "yyyy/mm/dd") & "# and cl_fnac <=#" & Format(mh.Text, "yyyy/mm/dd") & "# and cl_nomcobr =" & 4 & " and estado <>" & 97 & " and cl_val1 >=" & 0
+               data_acc.Refresh
+            Else
+               data_acc.RecordSource = "Select * from infor_sol where cl_val2 =" & 7 & " and cl_fnac >=#" & Format(md.Text, "yyyy/mm/dd") & "# and cl_fnac <=#" & Format(mh.Text, "yyyy/mm/dd") & "# and cl_nomcobr =" & 4 & " and estado <>" & 97 & " and cl_val1 >=" & 0 & " and cl_nom_sup ='" & Xelu & "'"
+               data_acc.Refresh
+            End If
+         Else
+            If Combo1.ListIndex = 2 Or Combo1.ListIndex = 3 Then
+               If Xelu = "" Then
+                  data_acc.RecordSource = "Select * from infor_sol where cl_val2 =" & 7 & " and estado <>" & 99 & " and cl_fnac >=#" & Format(md.Text, "yyyy/mm/dd") & "# and cl_fnac <=#" & Format(mh.Text, "yyyy/mm/dd") & "# and cl_nomcobr =" & 4 & " and estado <>" & 97 & " and cl_val1 <" & 0
+                  data_acc.Refresh
+               Else
+                  data_acc.RecordSource = "Select * from infor_sol where cl_val2 =" & 7 & " and estado <>" & 99 & " and cl_fnac >=#" & Format(md.Text, "yyyy/mm/dd") & "# and cl_fnac <=#" & Format(mh.Text, "yyyy/mm/dd") & "# and cl_nomcobr =" & 4 & " and estado <>" & 97 & " and cl_val1 <>" & 1 & " and cl_nom_sup ='" & Xelu & "'"
+                  data_acc.Refresh
+               End If
+            Else
+               If Xelu = "" Then
+                  data_acc.RecordSource = "Select * from infor_sol where cl_val2 =" & 7 & " and cl_fnac >=#" & Format(md.Text, "yyyy/mm/dd") & "# and cl_fnac <=#" & Format(mh.Text, "yyyy/mm/dd") & "# and cl_nomcobr =" & 4 & " and estado <>" & 97
+                  data_acc.Refresh
+               Else
+                  data_acc.RecordSource = "Select * from infor_sol where cl_val2 =" & 7 & " and cl_fnac >=#" & Format(md.Text, "yyyy/mm/dd") & "# and cl_fnac <=#" & Format(mh.Text, "yyyy/mm/dd") & "# and cl_nomcobr =" & 4 & " and estado <>" & 97 & " and cl_nom_sup ='" & Xelu & "'"
+                  data_acc.Refresh
+               End If
+            End If
+         End If
+      End If
+      If data_acc.Recordset.RecordCount > 0 Then
+         data_acc.Recordset.MoveFirst
+         Do While Not data_acc.Recordset.EOF
+            data_inf.Recordset.AddNew
+            data_inf.Recordset("cl_codigo") = data_acc.Recordset("cl_numero")
+            data_inf.Recordset("cl_fnac") = data_acc.Recordset("cl_fnac")
+            data_inf.Recordset("cl_cantpag") = data_acc.Recordset("cl_nrovend")
+            data_inf.Recordset("cl_descpag") = data_acc.Recordset("cl_descpag") ' usuario que lo crea
+            data_inf.Recordset("cl_forpago") = data_acc.Recordset("cl_nro_sup")
+            data_inf.Recordset("cl_localid") = data_acc.Recordset("cl_descpag")
+            data_inf.Recordset("cl_apellid") = data_acc.Recordset("cl_desc1")
+            data_inf.Recordset("cl_dircobr") = Mid(data_acc.Recordset("info_debit"), 1, 100)
+            data_inf.Recordset("cl_nom_sup") = data_acc.Recordset("cl_nom_sup") ' usuario que modifica
+            data_inf.Recordset("cl_nomvend") = data_acc.Recordset("cl_nom_sup")
+            data_inf.Recordset("cl_fultvta") = data_acc.Recordset("cl_fultpag")
+            data_inf.Recordset("cl_cua_vto") = data_acc.Recordset("cl_val3")
+            data_inf.Recordset("cl_grupo") = data_acc.Recordset("cl_grupo")
+            If IsNull(data_acc.Recordset("cl_val1")) = False Then
+               If data_acc.Recordset("cl_val1") < 0 Then
+                  data_inf.Recordset("cl_zona") = "SIN CERRAR"
+                  data_inf.Recordset("estado") = 1
+               Else
+                  data_inf.Recordset("cl_zona") = "CERRADO"
+                  data_inf.Recordset("estado") = 2
+               End If
+            Else
+               data_inf.Recordset("cl_zona") = "SIN CERRAR"
+               data_inf.Recordset("estado") = 1
+            End If
+            data_inf.Recordset("cl_nro_sup") = data_acc.Recordset("cl_nro_sup")
+            data_inf.Recordset.Update
+            data_acc.Recordset.MoveNext
+         Loop
+         If data_inf.Recordset.RecordCount > 0 Then
+            If Combo1.ListIndex = 0 Then ''' todas
+            End If
+         End If
+         
+         frm_infactas.MousePointer = 0
+         MsgBox "Proceso terminado"
+         
+         data_inf.RecordSource = "Select * from infcli order by cl_fnac"
+         data_inf.Refresh
+         If Combo1.ListIndex = 0 Then
+            cr1.ReportFileName = App.Path & "\infmejor1.rpt"
+            cr1.ReportTitle = "INFORME DE ACTAS DESDE: " & md.Text & " HASTA: " & mh.Text
+            cr1.Action = 1
+         End If
+         If Combo1.ListIndex = 1 Then
+            cr1.ReportFileName = App.Path & "\infmejor1.rpt"
+            cr1.ReportTitle = "INFORME DE ACTAS CERRADAS DESDE: " & md.Text & " HASTA: " & mh.Text
+            cr1.Action = 1
+         End If
+         If Combo1.ListIndex = 2 Then
+            cr1.ReportFileName = App.Path & "\infmejor1.rpt"
+            cr1.ReportTitle = "INFORME DE ACTAS PENDIENTES DESDE: " & md.Text & " HASTA: " & mh.Text
+            cr1.Action = 1
+         End If
+         If Combo1.ListIndex = 3 Then
+            cr1.ReportFileName = App.Path & "\infmejor2.rpt"
+            cr1.ReportTitle = "INFORME DE ACTAS CERRADAS DESDE: " & md.Text & " HASTA: " & mh.Text
+            cr1.Action = 1
+         End If
+         
+      Else
+         frm_infactas.MousePointer = 0
+         MsgBox "No existen registros"
+      End If
+   End If
+End If
+   
+Command1.Enabled = True
+Command2.Enabled = True
+frm_infactas.MousePointer = 0
+   
+End Sub
+
+Private Sub Command2_Click()
+Unload Me
+
+End Sub
+
+Private Sub Form_Load()
+data_acc.Connect = "odbc;dsn=" & Xconexrmt & ";"
+data_inf.DatabaseName = App.Path & "\informes.mdb"
+data_inf.RecordSource = "infcli"
+data_inf.Refresh
+data_busca.Connect = "odbc;dsn=" & Xconexrmt & ";"
+Combo1.ListIndex = 0
+Combo2.Clear
+Combo2.AddItem "TODOS"
+Combo2.AddItem "DIRECTOR GENERAL"
+Combo2.AddItem "GERENTE GENERAL"
+Combo2.AddItem "DIRECCION TECNICA"
+Combo2.AddItem "SUB-DIREC.TECNICA"
+Combo2.AddItem "GERENTE COMERCIAL"
+Combo2.AddItem "JEFE DE MEDICOS DE MOVIL"
+Combo2.AddItem "JEFE CHOFERES Y MANT."
+Combo2.AddItem "JEFE TESORERIA/CONT."
+Combo2.AddItem "JEFE C.COMPUTOS"
+Combo2.AddItem "JEFE BASES Y ENF."
+Combo2.AddItem "JEFE FARMACIA/ECONOMATO"
+Combo2.AddItem "JEFE DESPACHO"
+Combo2.AddItem "JEFE PRUEBAS"
+Combo2.ListIndex = -1
+
+End Sub
+
+Private Sub md_KeyPress(KeyAscii As Integer)
+If KeyAscii = 13 Then
+   mh.SetFocus
+End If
+
+End Sub
+
+Private Sub mh_KeyPress(KeyAscii As Integer)
+If KeyAscii = 13 Then
+   Combo1.SetFocus
+End If
+
+End Sub

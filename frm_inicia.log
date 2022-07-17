@@ -1,0 +1,10 @@
+Línea 246: la clase MSWinsockLib.Winsock del control wincli no era una clase de control cargada.
+Línea 254: la clase MSWinsockLib.Winsock del control sockserv no era una clase de control cargada.
+Línea 249: el nombre de la propiedad _ExtentX de wincli no es válido.
+Línea 250: el nombre de la propiedad _ExtentY de wincli no es válido.
+Línea 251: el nombre de la propiedad _Version de wincli no es válido.
+Línea 252: el nombre de la propiedad RemotePort de wincli no es válido.
+Línea 257: el nombre de la propiedad _ExtentX de sockserv no es válido.
+Línea 258: el nombre de la propiedad _ExtentY de sockserv no es válido.
+Línea 259: el nombre de la propiedad _Version de sockserv no es válido.
+Línea 260: el nombre de la propiedad LocalPort de sockserv no es válido.

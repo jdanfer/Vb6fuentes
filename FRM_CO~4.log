@@ -1,0 +1,16 @@
+Línea 157: la clase MSMAPI.MAPISession del control MAPISession1 no era una clase de control cargada.
+Línea 167: la clase MSMAPI.MAPIMessages del control MAPIMessages1 no era una clase de control cargada.
+Línea 160: el nombre de la propiedad _ExtentX de MAPISession1 no es válido.
+Línea 161: el nombre de la propiedad _ExtentY de MAPISession1 no es válido.
+Línea 162: el nombre de la propiedad _Version de MAPISession1 no es válido.
+Línea 163: el nombre de la propiedad DownloadMail de MAPISession1 no es válido.
+Línea 164: el nombre de la propiedad LogonUI de MAPISession1 no es válido.
+Línea 165: el nombre de la propiedad NewSession de MAPISession1 no es válido.
+Línea 170: el nombre de la propiedad _ExtentX de MAPIMessages1 no es válido.
+Línea 171: el nombre de la propiedad _ExtentY de MAPIMessages1 no es válido.
+Línea 172: el nombre de la propiedad _Version de MAPIMessages1 no es válido.
+Línea 173: el nombre de la propiedad AddressEditFieldCount de MAPIMessages1 no es válido.
+Línea 174: el nombre de la propiedad AddressModifiable de MAPIMessages1 no es válido.
+Línea 175: el nombre de la propiedad AddressResolveUI de MAPIMessages1 no es válido.
+Línea 176: el nombre de la propiedad FetchSorted de MAPIMessages1 no es válido.
+Línea 177: el nombre de la propiedad FetchUnreadOnly de MAPIMessages1 no es válido.
